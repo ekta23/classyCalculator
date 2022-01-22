@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Fredoka+One&display=swap" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>The Classy Calculator</title>
+    <link rel = "icon" href = 
+"https://cdn-icons.flaticon.com/png/512/1011/premium/1011812.png?token=exp=1642871723~hmac=988c3e05749636a5000dcd0711861953" 
+        type = "image/x-icon">
+    <style>
+        body{
+            background-image: linear-gradient(to right,#fc575e,#f7b42c);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        h1{
+     font-family: 'Fredoka One', cursive;
+     font-size: 40px;
+     align-self: center;
+        }
+        .calculator{
+            background-color: rgba(0, 0, 0, 0.897);
+            height:480px;
+            width:350px;
+            align-self: center;
+            margin-top: 50px;
+            border-radius: 1rem;
+            box-shadow: 5px 5px 12px rgb(0 0 0 / 50%);
+            
+        }
+        .calculator .display{
+            background: #3B3B3B;
+            border-radius: 0.725rem;
+            padding: 0.65rem;
+            box-shadow: inset 2px 3px 5px 0px rgb(0 0 0 / 70%);
+            outline: none;
+            height:50px;
+            margin: 10px;
+            border: 0px;
+        }
+        div{
+            display: block;
+            
+        }
+        
+        .buttons:hover{
+            cursor:pointer;
+        }
+        
+        #row{
+            display: flex;
+            flex-direction: row;
+        }
+        .special-keys:hover{
+     background-color: rgb(245, 110, 133);
+     color: black;
+        }
+        .normal-keys:hover{
+            background-color: aliceblue;
+            color: black;
+        }
+        #equal:hover{
+            background-color: rgb(194, 248, 93);
+            color: black;
+        }
+        #equal{
+            background-color: skyblue;color:black;
+        }
+
+        .buttons {
+            background-color:  #616161;
+            border-radius: 50%;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            outline-offset: 4px;
+            width: 70px;
+           height: 70px;
+           margin: 10px;
+           color:white;
+           text-align: center;
+           outline: none;
+           font-size: 18px;
+           box-shadow: 0px 5px 5px -5px #616161;
+  }
+  
+  h3{
+    font-family: 'Fredoka One', cursive;
+     font-size: 20px;
+     align-self: center;
+     margin-top: 80px;
+  }
+  
+    #io{
+        float: right;
+        font-size: 20px;
+        font-family: 'Fredoka One', cursive;
+        color: white;
+    }
+
+    </style>
+    
+   
+    
+   <script>
+    
+       window.onload=function(){
+        let number1="";
+        let number2="";
+        let op="";
+
+        document.querySelectorAll('.normal-keys').forEach(item => {
+  item.addEventListener('click', event => {
+    if(op==="" && number1==="" && number2===""){
+        number1=number1+item.innerHTML;
+        document.getElementById("io").innerHTML=number1;
+    }
+    else if(op==="" && number2===""){
+        number1=number1+item.innerHTML;
+        document.getElementById("io").innerHTML=number1;
+    }
+    else if(op!==""){
+        number2=number2+item.innerHTML;
+        document.getElementById("io").innerHTML=number2;
+    }
+    
+  })
+});
+document.querySelectorAll(".special-keys").forEach(item=>{
+    item.addEventListener('click',event=>{
+     op=item.innerHTML;
+    });
+});
+document.getElementById("clear").addEventListener("click",()=>{
+number2="";
+number1="";
+op="";
+document.getElementById("io").innerHTML="0";
+});
+
+document.getElementById("equal").addEventListener("click",()=>{
+    if(op==="X"){
+        document.getElementById("io").innerHTML=Number(number1)*Number(number2);
+        console.log(Number(number1)*Number(number2));
+        op="";
+        number1="";
+        number2="";
+    }
+    if(op==="+"){
+        document.getElementById("io").innerHTML=Number(number1)+Number(number2);
+        console.log(Number(number1)+Number(number2));
+        op="";
+        number1="";
+        number2="";
+    }
+    if(op==="-"){
+        document.getElementById("io").innerHTML=Number(number1)-Number(number2);
+        console.log(Number(number1)-Number(number2));
+        op="";
+        number1="";
+        number2="";
+    }
+    if(op==="/"){
+        document.getElementById("io").innerHTML=Number(number1)/Number(number2);
+        console.log(Number(number1)/Number(number2));
+        op="";
+        number1="";
+        number2="";
+    }
+});
+    };
+   
+    
+
+    
+   </script> 
+</head>
+<body>
+    <h1>THE CLASSY CALCULATOR</h1>
+    <div class="calculator">
+        <div class="display">
+        <p id="io">0</p>
+        </div>
+        <div id="row">
+        <button id="clear" class="buttons special-keys"><span class="front">C</span></button>
+        <button class="buttons special-keys">/</button>
+        <button class="buttons special-keys">X</button>
+        <button class="buttons special-keys">-</button>
+        
+        </div>
+        <div id="row">
+            <button class="buttons normal-keys">7</button>
+            <button class="buttons normal-keys">8</button>
+            <button class="buttons normal-keys">9</button>
+            <button class="buttons normal-keys">0</button>
+
+        </div>
+        <div id="row">
+            <button class="buttons normal-keys">4</button>
+            <button class="buttons normal-keys">5</button>
+            <button class="buttons normal-keys">6</button>
+            <button class="buttons special-keys">+</button>
+
+        </div>
+        <div id="row">
+            <button class="buttons normal-keys">1</button>
+            <button class="buttons normal-keys">2</button>
+            <button class="buttons normal-keys">3</button>
+            <button class="buttons" id="equal">=</button>
+
+        </div>
+    </div>
+<h3>Ekta Bangar © 2022</h3>
+  
+    
+</body>
+</html>
